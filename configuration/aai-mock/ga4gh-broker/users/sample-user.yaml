@@ -1,0 +1,34 @@
+---
+# Identifier of the user - has to match the value of 'sub' claim in AAI
+userId: "jd123@lifescience-ri.eu"
+visas:
+  - source: https://faberuni.edu/
+    expires: 1714664528
+    asserted: 1683049328
+    value: "affiliate@faberuni.edu"
+    type: "AffiliationAndRole"
+    by: "system"
+  - source: https://faberuni.edu/
+    expires: 1714664528
+    asserted: 1683049328
+    value: "faculty@faberuni.edu"
+    type: "AffiliationAndRole"
+    by: "system"
+  - source: https://faberuni.edu/
+    expires: 1714664528
+    asserted: 1683049328
+    value: "https://lifescience-ri.eu/ls-login/ls-aai-aup.html"
+    type: "AcceptedTermsAndPolicies"
+    by: "system"
+  - source: https://faberuni.edu/
+    expires: 1714664528
+    asserted: 1683049328
+    value: "https://doi.org/10.1038/s41431-018-0219-y"
+    type: "ResearcherStatus"
+    by: "system"
+  - source: https://faberuni.edu/
+    expires: 1714664528
+    asserted: 1683049328
+    value: "urn:sampledataset:gdi:testcase"
+    type: "ControlledAccessGrants"
+    by: "system"

@@ -1,0 +1,11 @@
+---
+
+# Configuration for broker client - needed to support Passports and Visas v1.2
+
+client-name: "GA4GH Broker"
+client-id: "broker"
+client-secret: "broker-secret"
+redirect-uris: []
+token-endpoint-auth-method: "client_secret_basic"
+scope: ["openid", "ga4gh_passport_v1"]
+grant-types: []
