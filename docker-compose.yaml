@@ -3,7 +3,7 @@
 version: '3'
 services:
   aai-mock:
-    image: registry.gitlab.ics.muni.cz:443/perun-proxy-aai/containers/docker-gdi:latest
+    image: registry.gitlab.ics.muni.cz:443/perun-proxy-aai/containers/docker-gdi:aai-mock2.0.0-broker2.1.1-tomcat9.0-jdk11
     container_name: ls-aai-mock
     volumes:
       - "./configuration/aai-mock:/etc/lsaai-mock"
