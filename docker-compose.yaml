@@ -3,7 +3,7 @@
 version: '3'
 services:
   aai-mock:
-    image: registry.gitlab.ics.muni.cz:443/perun-proxy-aai/containers/docker-gdi:aai-mock2.0.0-broker2.1.1-tomcat9.0-jdk11
+    image: registry.gitlab.ics.muni.cz:443/perun-proxy-aai/containers/docker-gdi:latest
     container_name: ls-aai-mock
     volumes:
       - "./configuration/aai-mock:/etc/lsaai-mock"
@@ -11,6 +11,7 @@ services:
       - '8080:8080'
     networks:
       - lsaaimock
+      - my-app-network
   aai-db:
     image: mysql/mysql-server:latest
     container_name: ls-aai-db
@@ -28,6 +29,7 @@ services:
       - '3306:3306'
     networks:
       - lsaaimock
+      - my-app-network
 # Uncomment if you need to write visas into the broker - this is the storage for the broker
   #broker-db:
   #  image: mysql/mysql-server:latest
@@ -49,3 +51,5 @@ services:
 
 networks:
   lsaaimock:
+  my-app-network:
+    external: true
