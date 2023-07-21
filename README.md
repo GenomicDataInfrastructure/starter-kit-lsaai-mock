@@ -194,6 +194,11 @@ post-logout-redirect-uris: ["http://localhost:9009/post-logout"]
 
 # Only configure this if you want to enable PKCE flow - set to 'plain' or 'S256'. In such a case the token-endpoint-auth-method should be set to 'none'.
 # code-challenge-method: "S256"
+
+# Resource IDs if you plan to make use of Resource Indicators (RFC 8707)
+# Configures values of allowed "resource" params. When performing authN request and resource indicators are passed, OIDC will check if all values are registered either
+# directly as client-id(s) or as resource-id(s) in some configured client
+# resource-ids: ['app-123', 'broker-cid', 'urn:gdi:beacon']
 ```
 
 This directory has to include configuration for the broker client if you want to use `GA4GH Passport and Visas standard v1.2`:
