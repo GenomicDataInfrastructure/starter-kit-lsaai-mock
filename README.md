@@ -1,12 +1,12 @@
 ![](logo_small.png)
 
-# GDI-AAI
+# GDI-LSAAI-MOCK
 
-Sample docker-compose to bring up and run mock of the LS AAI. Contains a predefined user and sample client. Further configuration is expected to add clients and users for the testing.
+Sample docker-compose to bring up and run a mock of the LS AAI. Contains a predefined user and sample client. Further configuration is expected to add clients and users for the testing.
 
 ## Running
 
-Use the provided docker-compose to run an example deployement. Update the configurations of clients, users and GA4GH Visas if needed in the mappec configuration directory and with the help of `Configuration` section below.
+Use the provided docker-compose to run an example deployment. Update the configurations of clients, users and GA4GH Visas if needed in the mapped configuration directory and with the help of the `Configuration` section below.
 
 ### AAI (login) mock
 
@@ -19,7 +19,7 @@ Visit the `localhost:8080/oidc/.well-known/openid-configuration` endpoint to lea
 
 ### Broker
 
-You do not need to interact with the broker at all in usual use-cases. If for some reason you have to, the mapping of the endpoints is usually:
+You do not need to interact with the broker at all in the usual use cases. If for some reason you have to, the mapping of the endpoints is usually:
 
 * `/ga4gh-broker/jwks` - endpoint exposing the JWKS used for visa signature verification
 * `/ga4gh-broker/1.0/{user_id}` - fetch visas using the Standard v1.0 procedure - generates list of visas (replace user_id with the userId from configuration file)
@@ -59,7 +59,7 @@ The whole configuration needs to be located under `/etc/lsaai-mock/` directory. 
 
 This is the main configuration file of the AAI OpenID Provider mock.
 ```
-### url where the application runs
+### URL where the application runs
 main.oidc.issuer.url=http://localhost:8080/oidc/
 ### base path for web (e.g. issuer without trailing slash)
 web.baseURL=https://localhost:8080/oidc
@@ -143,10 +143,6 @@ voperson-current-external-affiliation : ["affiliate@edu2.edu"]
 
 # scope authenticating-entity
 authenticating-entity:
-
-# scope authn-details
-acr: "https://refeds.org/profile/mfa"
-authn-instant: "2011-12-03T10:15:30Z"
 ```
 
 Scope `ga4gh_passport_v1` does not need to be configured as it is directly read from the broker instance.
@@ -158,7 +154,7 @@ To configure clients able to use the OpenID Provider, create one file per client
 Sample client file:
 
 ```
-# Webpages display name of the client
+# Webpages display the name of the client
 client-name: "Sample client"
 
 # Unique identifier of the client
@@ -260,7 +256,7 @@ mock-broker:
   passport-repositories:
       # For readability purposes
     - name: Sample-REMS
-      # Location to fetch the visas - {user_id} part will be replaced with the identifier of the user - contents of the calim SUB from AAI mock
+      # Location to fetch the visas - {user_id} part will be replaced with the identifier of the user - contents of the claim SUB from AAI mock
       url: http://rems.local/api/permissions/{user_id}
       # Location of JWKS
       jwks: http://rems.local/api/jwk
@@ -319,7 +315,7 @@ Sample user file:
 
 ```
 ---
-# Identifier of the user - has to match the value of 'sub' claim in AAI
+# Identifier of the user - has to match the value of the 'sub' claim in AAI
 userId: user@lifescience-ri.eu
 visas:
     # Who has issued the visa
