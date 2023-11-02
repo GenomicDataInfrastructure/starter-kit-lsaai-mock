@@ -17,6 +17,10 @@ When you run the sample docker-compose, you will have AAI mock running on port `
 
 Visit the `localhost:8080/oidc/.well-known/openid-configuration` endpoint to learn about the endpoints of the OpenID Provider.
 
+#### Bypassing the user selection
+
+To bypass the user selection, while sending out the initial request to the authorization endpoint, you can provide an additional parameter `username_hint`, with a value matching to one of the user identifiers from the configured userinfo responses. This will trigger pre-selection of the user and can be used e.g. in the automated testing scenario to completely bypass the user "authentication" part, resulting in streamlining the login simulation.
+
 ### Broker
 
 You do not need to interact with the broker at all in the usual use cases. If for some reason you have to, the mapping of the endpoints is usually:
