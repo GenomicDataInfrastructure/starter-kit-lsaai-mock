@@ -24,7 +24,7 @@ services:
     volumes:
       - "./scripts/aai-mock.sql:/docker-entrypoint-initdb.d/1.sql"
     # remove this to disable persistent storage
-      - "./mysql://var/lib/mysql"
+      - "mysql:/var/lib/mysql"
     ports:
       - '3306:3306'
     networks:
@@ -53,3 +53,6 @@ networks:
   lsaaimock:
   my-app-network:
     external: true
+
+volumes:
+  mysql:
