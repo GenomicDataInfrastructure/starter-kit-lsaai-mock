@@ -52,7 +52,7 @@ services:
 networks:
   lsaaimock:
   my-app-network:
-    external: true
+    name: my-app-network
 
 volumes:
   mysql:
