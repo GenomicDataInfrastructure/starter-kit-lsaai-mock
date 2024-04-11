@@ -3,6 +3,10 @@
 version: '3'
 services:
   aai-mock:
+    environment:
+      - DOCKERHOST=${DOCKERHOST:-localhost}
+    extra_hosts:
+      - "${DOCKERHOST:-dockerhost}:host-gateway"
     image: registry.gitlab.ics.muni.cz:443/perun/deployment/proxyidp/proxyidp-public-docker-images/ls_aai_mock:2.5.2-broker2.1.10-tomcat9.0-jdk11
     container_name: ls-aai-mock
     volumes:
@@ -24,7 +28,7 @@ services:
     volumes:
       - "./scripts/aai-mock.sql:/docker-entrypoint-initdb.d/1.sql"
     # remove this to disable persistent storage
-      - "./mysql://var/lib/mysql"
+      - "mysql:/var/lib/mysql"
     ports:
       - '3306:3306'
     networks:
@@ -52,4 +56,7 @@ services:
 networks:
   lsaaimock:
   my-app-network:
-    external: true
+    name: my-app-network
+
+volumes:
+  mysql:
